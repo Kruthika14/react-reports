@@ -8,7 +8,8 @@ import React, { Component, useEffect, useState } from 'react';
 import { Urls } from '../../Config/Config';
 import { Link } from 'react-router-dom';
 import './Report.css';
-// import Select from 'react-select'
+import Select from 'react-select';
+import ReactDatePicker from 'react-datepicker';
 
 const Msreport=()=>
 {
@@ -27,7 +28,6 @@ const Msreport=()=>
     const user_types = Urls.user_types;
     const reports_lists = Urls.reports_lists;
     const current_report = Urls.reports_lists[0];
-    console.log(invoice_dropdown_value)
     /**
      * 
      * get milestone and practice data
@@ -55,7 +55,6 @@ const Msreport=()=>
             }),               
             headers: {
                 "Content-type": "application/json; charset=UTF-8",
-                "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImQ5ZThkMDFkMTFlMzQyOTE2NTlhNGVlNjIxMzAyYzI3YjdhYWJjZDMwOGZlZmI0YTBhOTk3MjlkYzY2ZjAxMjVhMjc2NmNmNzNhMGNkYTY4In0.eyJhdWQiOiIxIiwianRpIjoiZDllOGQwMWQxMWUzNDI5MTY1OWE0ZWU2MjEzMDJjMjdiN2FhYmNkMzA4ZmVmYjRhMGE5OTcyOWRjNjZmMDEyNWEyNzY2Y2Y3M2EwY2RhNjgiLCJpYXQiOjE2Mzk3MjA0MjksIm5iZiI6MTYzOTcyMDQyOSwiZXhwIjoxNjcxMjU2NDI5LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.Y9zccqMf1EuqGY_rUnwFerr7wxowx7GjOcuM5IL8l3xfZqKKB91JsA5qCYprLZjIrSBWujTzFxePnTGluG2CirL0dm09aMNfroY6PQjpK8t3nbYY4VlIiCLDp6vJWH14bA0ADspxhBgLdSu2MJt4hTQ6w6dEoIVO5cyVIawWBZX4MzVttRnXHlZc9Bb1l4wUWcFQIgBh8Oa6Pw86jQkiT8rZdvwTCF2ooxUnkQpXNoiLZCjTKcr6WfdULpZAG1tqnb6Iqxyy_zFt9gYXG1nSpDc6bNu8f83zbj-SmkNJl1Y_VOf3PPH1q_38pbebD-PyFY9PaMBDFk4CcamE09gRtAQ6hnsWRefjdTczIY3IigItOd_zZpU4Hr5DHFG3R1V0TK8zYwBg9k5OL4gUPSrd5VZWZ3UKelcB7Zchdt7LQKer3-geNgzQgnufDEq4hVPz2OBGurCt2D2pwaRvrL62ZFiL-Q54VpvynxE3mnRppFvuJX-SRceG-LnRyMoi1YvlW6CpeKKIH0SQqLHXdzXRxtlvMzQx70TMr5tqMkLhQ1ExQPNxBXWLr-AjEPJqPjtaEjnjPn2My43fThNSFjtgmlumJePfiVw-T6nPdTgea9NM8gT5ylddHVA6zS0J3P8bG53v9CFt_3Huea6I9nRrIo3PSp0k-Ey_OcX0TZGgzYo"
             }
         }).then(res => res.json()).then(result => {
             console.log(result)
@@ -83,12 +82,6 @@ const Msreport=()=>
     function selectFilterMs(value){
         setCurrentFilter(value);
         console.log(currentFilter)
-        // if(self.scope.report.start_date){
-        //   self.scope.submitted = false;
-        //   self.scope.generateMileStoneValueReport(true)
-        // }else{
-        //   self.scope.submitted = true;
-        // }
     }
 
     /**
@@ -127,6 +120,8 @@ const Msreport=()=>
                                                             placeholder="Start Date" name="start_date" ng-model="report.start_date"
                                                             datepicker-options="{minMode:'month',datepickerMode: 'month','starting-day' : 1}"
                                                             type="text" is-open="startOpened" ng-click="startOpened = true"  close-text="Close"  required /> */}
+                                                            {/* <ReactDatePicker 
+                                                            selected={report.start_date} onChange={(date) => setStartDate(date)></ReactDatePicker> */}
                                                             <span className="input-group-addon p-l-5 p-r-5" id="basic-addon2" ng-click="startOpened = true;">
                                                             <i className="icon-calendar"></i>
                                                             </span>
